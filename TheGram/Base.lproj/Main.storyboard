@@ -61,11 +61,17 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onSignin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b9r-bJ-tcA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEv-Vm-18M">
                                 <rect key="frame" x="344" y="469" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="onSignup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SqL-3f-IBQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -100,6 +106,7 @@
                         <outlet property="titleLabel" destination="UaA-DM-4eW" id="6u6-zn-qSE"/>
                         <outlet property="usernameLabel" destination="xoR-ux-gmH" id="Q9D-sq-23T"/>
                         <outlet property="usernameTextfield" destination="sjm-Jx-ygP" id="0kJ-65-UVw"/>
+                        <segue destination="JcQ-tE-cek" kind="presentation" identifier="loginSegue" id="ZWK-8i-Tad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,12 +127,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN5-Hw-Du1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1963.7681159420292" y="128.57142857142856"/>
+            <point key="canvasLocation" x="1961" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t8g-II-Blh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JcQ-tE-cek" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="JcQ-tE-cek" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZNR-oh-jzD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -138,7 +145,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAK-7P-aLE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="128.57142857142856"/>
+            <point key="canvasLocation" x="1057" y="137"/>
         </scene>
     </scenes>
 </document>

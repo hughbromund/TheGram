@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextfield: UITextField!
@@ -31,6 +32,8 @@ class LoginViewController: UIViewController {
         signinButton.backgroundColor = orange
         signinButton.tintColor = orange
         signinButton.setTitleColor(white, for: UIControl.State.normal)
+        signinButton.layer.cornerRadius = 5
+        signinButton.clipsToBounds = true
         
         self.view.backgroundColor = darkGrey
         
@@ -47,7 +50,46 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
+    @IBAction func onSignin(_ sender: Any) {
+        let username = usernameTextfield.text!
+        let password = passwordTextfield.text!
+  
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+            if (user != nil) {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil);
+            } else {
+                print("Error Signing In")
+                print(error!)
+                let alertController = UIAlertController(title: "Invalid Username/Password", message: "Plase check your Username and Password and try signing in again.", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                self.passwordTextfield.text = ""
+            }
+        }
+        
+    }
+    
+    @IBAction func onSignup(_ sender: Any) {
+        let user = PFUser()
+        user.username = usernameTextfield.text
+        user.password = passwordTextfield.text
+        
+        user.signUpInBackground { (success, error) in
+            if (success) {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil);
+            } else {
+                print("Error Signing Up")
+                print(error!)
+                let alertController = UIAlertController(title: "Unable to Sign Up", message: "It is possible that an account with that Username already exists. Did you mean to sign in?", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                self.passwordTextfield.text = ""
+            }
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
