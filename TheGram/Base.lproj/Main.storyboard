@@ -123,11 +123,77 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="b8S-qV-XJb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8dN-Ag-eyC"/>
+                    <navigationItem key="navigationItem" id="8dN-Ag-eyC">
+                        <barButtonItem key="rightBarButtonItem" title="+" image="camera.fill" catalog="system" id="g5m-AT-gjq">
+                            <connections>
+                                <segue destination="buc-SG-2cg" kind="presentation" id="3y8-MH-OiH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN5-Hw-Du1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1961" y="137"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="bIp-fF-N96">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="buc-SG-2cg" customClass="CameraViewController" customModule="TheGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vMg-85-eoP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="8ob-Qh-68B">
+                                <rect key="frame" x="20" y="44" width="374" height="365"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="365" id="xVv-h1-OVH"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="knP-Qz-9os" appends="YES" id="tpn-vF-riJ"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6u-gD-oM8">
+                                <rect key="frame" x="20" y="419" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w41-cQ-2YH">
+                                <rect key="frame" x="20" y="463" width="374" height="30"/>
+                                <state key="normal" title="Submit Image"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="buc-SG-2cg" eventType="touchUpInside" id="ESC-UQ-gDC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w41-cQ-2YH" firstAttribute="top" secondItem="k6u-gD-oM8" secondAttribute="bottom" constant="10" id="H7l-KU-qdK"/>
+                            <constraint firstItem="Il9-sZ-kP4" firstAttribute="trailing" secondItem="8ob-Qh-68B" secondAttribute="trailing" constant="20" id="I1V-rd-jPD"/>
+                            <constraint firstItem="w41-cQ-2YH" firstAttribute="leading" secondItem="Il9-sZ-kP4" secondAttribute="leading" constant="20" id="Ie5-rI-QSK"/>
+                            <constraint firstItem="8ob-Qh-68B" firstAttribute="leading" secondItem="Il9-sZ-kP4" secondAttribute="leading" constant="20" id="P7t-bA-ULX"/>
+                            <constraint firstItem="k6u-gD-oM8" firstAttribute="leading" secondItem="Il9-sZ-kP4" secondAttribute="leading" constant="20" id="PZF-95-6yX"/>
+                            <constraint firstItem="Il9-sZ-kP4" firstAttribute="trailing" secondItem="w41-cQ-2YH" secondAttribute="trailing" constant="20" id="e61-7I-bkN"/>
+                            <constraint firstItem="k6u-gD-oM8" firstAttribute="top" secondItem="8ob-Qh-68B" secondAttribute="bottom" constant="10" id="gED-Mf-fix"/>
+                            <constraint firstItem="Il9-sZ-kP4" firstAttribute="trailing" secondItem="k6u-gD-oM8" secondAttribute="trailing" constant="20" id="rKa-yf-dHl"/>
+                            <constraint firstItem="8ob-Qh-68B" firstAttribute="top" secondItem="Il9-sZ-kP4" secondAttribute="top" id="yJG-Gb-HTD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Il9-sZ-kP4"/>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="k6u-gD-oM8" id="3kn-gu-CkS"/>
+                        <outlet property="imageView" destination="8ob-Qh-68B" id="plD-uR-oe6"/>
+                        <outlet property="submitButton" destination="w41-cQ-2YH" id="Zjr-3p-h4G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONM-Qj-bIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="knP-Qz-9os">
+                    <connections>
+                        <action selector="onCameraButton:" destination="buc-SG-2cg" id="D5T-9C-M7l"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2826.0869565217395" y="136.60714285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t8g-II-Blh">
@@ -148,4 +214,8 @@
             <point key="canvasLocation" x="1057" y="137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="153.33332824707031" height="149.66667175292969"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
+    </resources>
 </document>
