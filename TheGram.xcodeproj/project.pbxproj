@@ -16,6 +16,7 @@
 		1E29E8F023FB585D00DBD95D /* TheGramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29E8EF23FB585D00DBD95D /* TheGramUITests.swift */; };
 		1E29E8FE23FB5CED00DBD95D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29E8FD23FB5CED00DBD95D /* LoginViewController.swift */; };
 		1E29E90123FB5D1E00DBD95D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29E90023FB5D1E00DBD95D /* FeedViewController.swift */; };
+		1E445E7C2404996F00DFE532 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E445E7B2404996F00DFE532 /* CommentTableViewCell.swift */; };
 		1E90F4842402F37800CFE984 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90F4832402F37800CFE984 /* CameraViewController.swift */; };
 		1ED8E6F9240307840021E832 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8E6F8240307840021E832 /* PostTableViewCell.swift */; };
 		8FA7D03EBC18F2BC03CFAF97 /* Pods_TheGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6018EC412B495841B996E7 /* Pods_TheGram.framework */; };
@@ -56,6 +57,7 @@
 		1E29E8F123FB585D00DBD95D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E29E8FD23FB5CED00DBD95D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E29E90023FB5D1E00DBD95D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		1E445E7B2404996F00DFE532 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		1E90F4832402F37800CFE984 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1ED8E6F8240307840021E832 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		471BE485E605EC40F14EEB5D /* Pods_TheGram_TheGramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheGram_TheGramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				1E29E90023FB5D1E00DBD95D /* FeedViewController.swift */,
 				1E90F4832402F37800CFE984 /* CameraViewController.swift */,
 				1ED8E6F8240307840021E832 /* PostTableViewCell.swift */,
+				1E445E7B2404996F00DFE532 /* CommentTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				1E90F4842402F37800CFE984 /* CameraViewController.swift in Sources */,
 				1E29E8CE23FB585A00DBD95D /* AppDelegate.swift in Sources */,
 				1E29E90123FB5D1E00DBD95D /* FeedViewController.swift in Sources */,
+				1E445E7C2404996F00DFE532 /* CommentTableViewCell.swift in Sources */,
 				1E29E8D023FB585A00DBD95D /* SceneDelegate.swift in Sources */,
 				1ED8E6F9240307840021E832 /* PostTableViewCell.swift in Sources */,
 			);

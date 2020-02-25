@@ -36,11 +36,22 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func logoutDidClick(_ sender: Any) {
+        PFUser.logOut()
+        
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let feedNavigationController = main.instantiateViewController(identifier: "LoginViewController")
+        // let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.view.window?.rootViewController = feedNavigationController
+        
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let query = PFQuery(className: "Posts")
-        query.includeKey("author")
+        query.includeKeys(["author", "comments", "comments.author"])
         
         query.limit = 20
         
@@ -56,29 +67,77 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(posts.count)
-        return posts.count;
+        let post = posts[section]
+        
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        // print(comments.count)
+        return comments.count + 1;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = posts[indexPath.section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        if indexPath.row == 0 {
+            // Post Cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as! PostTableViewCell
+            
+            let user = post["author"] as! PFUser
+            
+            cell.usernameLabel.text = "@" + (user.username ?? "NO_USERNAME")
+            cell.commentLabel.text = post["caption"] as? String
+            
+            
+            let imageFile = post["image"] as! PFFileObject
+            let urlString = imageFile.url!
+            let url = URL(string: urlString)!
+            
+            cell.postImageView?.af_setImage(withURL: url)
+            
+            return cell
+        } else {
+            // Comment Cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
+            
+            
+            // print(indexPath.row - 1)
+            
+            
+            let comment = comments[indexPath.row - 1]
+            cell.commentLabel.text = comment["text"] as? String
+            
+            let user = comment["author"] as! PFUser
+            
+            cell.usernameLabel.text = "-> @" + (user.username ?? "NO_USERNAME")
+            
+            return cell
+        }
+
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as! PostTableViewCell
+        let comment = PFObject(className: "Comments")
+        comment["text"] = "This is a defualt comment"
+        comment["post"] = post
+        comment["author"] = PFUser.current()
         
-        let user = post["author"] as! PFUser
+        post.add(comment, forKey: "comments")
         
-        cell.usernameLabel.text = user.username
-        cell.commentLabel.text = post["caption"] as! String
-        
-        
-        let imageFile = post["image"] as! PFFileObject
-        let urlString = imageFile.url!
-        let url = URL(string: urlString)!
-        
-        cell.postImageView?.af_setImage(withURL: url)
-        
-        return cell
-        
+        post.saveInBackground { (success, error) in
+            if success {
+                print("Comment Saved")
+            } else {
+                print("Error")
+                print(error!)
+            }
+        }
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return posts.count
     }
     
 
