@@ -8,6 +8,7 @@ target 'TheGram' do
   # Pods for TheGram
   pod "Parse"
   pod "AlamofireImage"
+  pod "MessageInputBar"
 
   target 'TheGramTests' do
     inherit! :search_paths
